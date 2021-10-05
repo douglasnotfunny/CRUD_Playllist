@@ -22,6 +22,7 @@ from django.urls import include, path
 router = routers.DefaultRouter()
 router.register(r'playlist', views.PlaylistViewSet)
 router.register(r'music', views.MusicViewSet)
+router.register(r'artist', views.ArtistViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
