@@ -1,21 +1,31 @@
-from django.contrib.auth.models import User, Group
+from api_playlist.models import Playlist, Music, Artist
 from rest_framework import viewsets
 from rest_framework import permissions
-from api_playlist.serializers import UserSerializer, GroupSerializer
+from api_playlist.serializers import PlaylistSerializer, MusicSerializer, ArtistSerializer
 
-class UserViewSet(viewsets.ModelViewSet):
+class PlaylistViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+    queryset = Playlist.objects.all().order_by('-date_joined')
+    serializer_class = PlaylistSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
-class GroupViewSet(viewsets.ModelViewSet):
+class MusicViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+    queryset = Music.objects.all()
+    serializer_class = MusicSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+class ArtistViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+

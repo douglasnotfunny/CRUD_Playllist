@@ -20,8 +20,8 @@ from rest_framework import routers
 from django.urls import include, path
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+router.register(r'playlist', views.PlaylistViewSet)
+router.register(r'music', views.MusicViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
