@@ -24,7 +24,22 @@ router.register(r'playlist', views.PlaylistViewSet)
 router.register(r'music', views.MusicViewSet)
 router.register(r'artist', views.ArtistViewSet)
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls), name='users')
+    path('', include(router.urls), name='users'),
+    # Playlists CRUD
+    path("playlist/", views.ListPlaylistAPIView.as_view(),name="playlist_list"),
+    path("playlist/update/<int:pk>", views.UpdatePlaylistAPIView.as_view(),name="playlist_update"),
+    path("playlist/delete/<int:pk>", views.DeletePlaylistAPIView.as_view(),name="playlist_delete"),  
+
+    # Music CRUD  
+    path("music/", views.ListMusicAPIView.as_view(),name="music_list"),
+    path("music/update/<int:pk>", views.UpdateMusicAPIView.as_view(),name="music_update"),
+    path("music/delete/<int:pk>", views.DeleteMusicAPIView.as_view(),name="music_delete"),  
+
+    # Artist CRUD  
+    path("artist/", views.ListArtistAPIView.as_view(),name="artist_list"),
+    path("artist/update/<int:pk>", views.UpdateArtistAPIView.as_view(),name="artist_update"),
+    path("artist/delete/<int:pk>", views.DeleteArtistAPIView.as_view(),name="artist_delete"),  
 ]

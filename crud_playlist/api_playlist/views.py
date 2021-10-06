@@ -1,31 +1,60 @@
 from api_playlist.models import Playlist, Music, Artist
 from rest_framework import viewsets
 from rest_framework import permissions
+from rest_framework.generics import ListAPIView, DestroyAPIView, UpdateAPIView
 from api_playlist.serializers import PlaylistSerializer, MusicSerializer, ArtistSerializer
 
-class PlaylistViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = Playlist.objects.all().order_by('-date_joined')
+#PLAYLIST CRUD
+class DeletePlaylistAPIView(DestroyAPIView):
+    queryset = Playlist.objects.all()
     serializer_class = PlaylistSerializer
-    permission_classes = [permissions.IsAuthenticated]
+
+class ListPlaylistAPIView(ListAPIView):
+    queryset = Playlist.objects.all()
+    serializer_class = PlaylistSerializer
+
+class UpdatePlaylistAPIView(UpdateAPIView):
+    queryset = Playlist.objects.all()
+    serializer_class = PlaylistSerializer
+
+class PlaylistViewSet(viewsets.ModelViewSet):
+    queryset = Playlist.objects.all()
+    serializer_class = PlaylistSerializer
 
 
-class MusicViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
+# MUSIC CRUD
+class DeleteMusicAPIView(DestroyAPIView):
     queryset = Music.objects.all()
     serializer_class = MusicSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
-class ArtistViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
+class ListMusicAPIView(ListAPIView):
+    queryset = Music.objects.all()
+    serializer_class = MusicSerializer
+
+class UpdateMusicAPIView(UpdateAPIView):
+    queryset = Music.objects.all()
+    serializer_class = MusicSerializer
+
+class MusicViewSet(viewsets.ModelViewSet):
+    queryset = Music.objects.all()
+    serializer_class = MusicSerializer
+
+
+# ARTIST CRUD
+class DeleteArtistAPIView(DestroyAPIView):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
-    permission_classes = [permissions.IsAuthenticated]
+
+class ListArtistAPIView(ListAPIView):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
+
+class UpdateArtistAPIView(UpdateAPIView):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
+
+class ArtistViewSet(viewsets.ModelViewSet):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
 
 
